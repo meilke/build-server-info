@@ -9,6 +9,8 @@
 
 #build-server-info
 
+Provides you with information from a possible build server context.
+
 ```
 var options = {
   artifactFileNames: ['package.zip'],
