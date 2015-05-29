@@ -1,6 +1,6 @@
 {
   "name": "build-server-info",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Provides you with information from a possible build server context",
   "homepage": "https://github.com/meilke/build-server-info",
   "author": "Christian Meilke",
