@@ -14,7 +14,7 @@ describe('A picture-perfect Teamcity context', function () {
       followUpBuildTypeIds: ['Testin_OtherTestin']
     };
     log = { info: sinon.stub() };
-    env = { TEAMCITY_BUILD_PROPERTIES_FILE: 'test/properties/build.properties' };
+    var env = { TEAMCITY_BUILD_PROPERTIES_FILE: 'test/properties/build.properties' };
     all = info(options, env, log);
     single = all[0];
   });

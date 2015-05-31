@@ -1,19 +1,30 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-release');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jslint');
   grunt.loadNpmTasks('grunt-mocha-test');
 
   var files = [ './Gruntfile.js', 'test/**/*.js', 'src/**/*.js' ];
 
   grunt.initConfig({
-    jshint: {
-      files: files,
-      options: {
-        quotmark : 'single',
-        node: true,
-        indent: 2,
-        unused: true,
-        nomen: true
+    jslint: {
+      module: {
+        src: files,
+        directives: {
+          sloppy: true,
+          quotmark : 'single',
+          node: true,
+          indent: 2,
+          vars: true,
+          unused: true,
+          nomen: true,
+          predef: [
+            'require',
+            'module',
+            'describe',
+            'it',
+            'beforeEach'
+          ]
+        }
       }
     },
     mochaTest: {
@@ -27,5 +38,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', [ 'jshint', 'mochaTest' ]);
+  grunt.registerTask('default', [ 'jslint', 'mochaTest' ]);
 };

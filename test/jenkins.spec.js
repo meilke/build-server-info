@@ -11,7 +11,7 @@ describe('A picture-perfect Jenkins context', function () {
   beforeEach(function () {
     options = {};
     log = { info: sinon.stub() };
-    env = {
+    var env = {
       JENKINS_URL: 'http://jenkins.local',
       BUILD_NUMBER: '44',
       BUILD_URL: 'http://jenkins.local/path/to/build'
