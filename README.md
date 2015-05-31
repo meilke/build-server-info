@@ -58,6 +58,7 @@ Inside Teamcity you get the follwoing information:
       'build.vcs.number.1': '96709885ead1f058e17021bfeb63007ddaac55fa',
       'build.vcs.number.VCS_1': '96709885ead1f058e17021bfeb63007ddaac55fa',
       build_number_to_deploy: '-',
+      // more stuff
     },
     runner: {
       'agent.ownPort': 9090,
