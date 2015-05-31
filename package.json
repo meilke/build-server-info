@@ -5,6 +5,7 @@
   "homepage": "https://github.com/meilke/build-server-info",
   "author": "Christian Meilke",
   "readmeFilename": "README.md",
+  "main": "src/index.js",
   "bugs": {
     "url": "https://github.com/meilke/build-server-info/issues"
   },

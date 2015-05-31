@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-test');
 
-  var files = [ './*.js', 'test/**/*.spec.js' ];
+  var files = [ './Gruntfile.js', 'test/**/*.js', 'src/**/*.js' ];
 
   grunt.initConfig({
     jshint: {
