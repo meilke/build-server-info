@@ -1,11 +1,9 @@
-var log,
-  options,
-  env,
+var environment,
   info,
   _ = require('lodash');
 
 function detect() {
-  return !!env.TEAMCITY_BUILD_PROPERTIES_FILE;
+  return !!environment.env.TEAMCITY_BUILD_PROPERTIES_FILE;
 }
 
 function information() {
@@ -37,7 +35,7 @@ function get(object, key) {
 function fillOriginal() {
   var original = {};
 
-  original.build = getProperties(env.TEAMCITY_BUILD_PROPERTIES_FILE);
+  original.build = getProperties(environment.env.TEAMCITY_BUILD_PROPERTIES_FILE);
   if (original.build) {
     original.configuration = getProperties(get(original.build, 'teamcity.configuration.properties.file'));
     original.runner = getProperties(get(original.build, 'teamcity.runner.properties.file'));
@@ -54,11 +52,11 @@ function gatherBuildSpecific() {
   build.buildId = get(info.original.build, 'teamcity.build.id');
   build.buildUrl = info.server.url + '/viewLog.html?buildId=' + build.buildId;
 
-  build.artifactUrls = _.map(options.artifactFileNames, function (artifactFileName) {
+  build.artifactUrls = _.map(environment.options.artifactFileNames, function (artifactFileName) {
     return info.server.url + '/repository/download/' + build.buildTypeId + '/' + build.buildNumber + '/' + artifactFileName;
   });
 
-  build.followUpBuildTypeUrls = _.map(options.followUpBuildTypeIds, function (followUpBuildTypeId) {
+  build.followUpBuildTypeUrls = _.map(environment.options.followUpBuildTypeIds, function (followUpBuildTypeId) {
     return info.server.url + '/viewType.html?buildTypeId=' + followUpBuildTypeId;
   });
 
@@ -81,11 +79,8 @@ function gather() {
   return info;
 }
 
-module.exports = function (_options_, _env_, _log_) {
-  log = _log_;
-  env = _env_;
-  options = _options_;
-
+module.exports = function (_environment_) {
+  environment = _environment_;
   return {
     detect: detect,
     information: information,

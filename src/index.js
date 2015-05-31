@@ -19,13 +19,14 @@ function printInformation(log, buildServers) {
 }
 
 module.exports = function (options, env, log) {
-  var logUsed = log || console;
+  var environment = require('./environment.js')(options, env || process.env, log || console);
+
   var buildServers = [
-    require('./teamcity.js')(options, env || process.env, logUsed),
-    require('./jenkins.js')(options, env || process.env, logUsed)
+    require('./teamcity.js')(environment),
+    require('./jenkins.js')(environment)
   ];
   var detectedBuildServers = _.filter(buildServers, detect);
   var buildInformation = _.map(detectedBuildServers, gather);
-  printInformation(logUsed, detectedBuildServers);
+  printInformation(environment.log, detectedBuildServers);
   return buildInformation;
 };
