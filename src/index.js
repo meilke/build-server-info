@@ -11,9 +11,13 @@ function gather(buildServer) {
 function printInformation(log, buildServers) {
   log.info();
   log.info('--------------');
-  _.map(buildServers, function (buildServer) {
-    log.info(buildServer.information());
-  });
+  if (_.some(buildServers)) {
+    _.map(buildServers, function (buildServer) {
+      log.info(buildServer.information());
+    });
+  } else {
+    log.info('No build server context found.');
+  }
   log.info('--------------');
   log.info();
 }
