@@ -67,4 +67,9 @@ describe('A picture-perfect Teamcity context', function () {
     expect(single.original.runner).to.be.ok();
   });
 
+  it('provides info even for empty options', function () {
+    single = info({}, { TEAMCITY_BUILD_PROPERTIES_FILE: 'test/properties/build.properties' }, log)[0];
+    expect(single.build.artifactUrls).to.be.empty();
+  });
+
 });
