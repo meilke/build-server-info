@@ -10,7 +10,8 @@
     "url": "https://github.com/meilke/build-server-info/issues"
   },
   "scripts": {
-    "test": "grunt"
+    "grunt": "grunt",
+    "test": "npm run grunt"
   },
   "repository": {
     "type": "git",
