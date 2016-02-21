@@ -5,7 +5,6 @@ before_install:
   - npm install -g istanbul codeclimate-test-reporter
 install:
   - npm install
-before_script:
-  - npm run grunt
+after_script:
   - istanbul cover node_modules/mocha/bin/_mocha -- -R spec
   - CODECLIMATE_REPO_TOKEN=1ede49a14ea68bd8b960768dfb2d0f33f58565722a81f5c093100ef53d261cb8 codeclimate-test-reporter < coverage/lcov.info
